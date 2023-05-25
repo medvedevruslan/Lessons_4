@@ -1,7 +1,7 @@
 package com.example.lessons_4.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.lessons_4.data.repository.UserRepositoryImpl
 import com.example.lessons_4.data.storage.sharedprefs.SharedPrefUserStorage
 import com.example.lessons_4.databinding.ActivityMainBinding
@@ -12,7 +12,7 @@ import com.example.lessons_4.domain.models.UserName
 
 class MainActivity : AppCompatActivity() {
 
-    private val sharedPrefUserStorage = SharedPrefUserStorage(applicationContext)
+    private val sharedPrefUserStorage by lazy { SharedPrefUserStorage(applicationContext) }
     private val userRepository by lazy { UserRepositoryImpl(sharedPrefUserStorage) }
     private val getDataUseCase by lazy { GetDataUseCase(userRepository) }
     private val saveDataUseCase by lazy { SaveDataUseCase(userRepository) }
