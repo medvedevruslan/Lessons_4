@@ -15,11 +15,8 @@ class SharedPrefUserStorage(context: Context) : UserStorage {
     private val sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
 
     override fun save(user: User): Boolean {
-
-        sharedPreferences.edit().putString(KEY_FIRST_NAME, user.firstName).apply()
-        sharedPreferences.edit().putString(KEY_LAST_NAME, user.lastName).apply()
-
-        return true
+        return (sharedPreferences.edit().putString(KEY_FIRST_NAME, user.firstName).commit() &&
+                sharedPreferences.edit().putString(KEY_LAST_NAME, user.lastName).commit())
     }
 
     override fun get(): User {
