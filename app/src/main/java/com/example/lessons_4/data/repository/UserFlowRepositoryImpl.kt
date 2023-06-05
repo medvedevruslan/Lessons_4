@@ -7,8 +7,10 @@ import com.example.lessons_4.domain.models.UserName
 import com.example.lessons_4.domain.repository.UserFlowRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class UserFlowRepositoryImpl(private val userFlowStorage: UserFlowStorage) : UserFlowRepository {
+class UserFlowRepositoryImpl @Inject constructor(private val userFlowStorage: UserFlowStorage) :
+    UserFlowRepository {
 
     override suspend fun saveName(saveParam: SaveUserNameParam): Boolean {
 
